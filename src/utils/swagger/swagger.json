@@ -1,0 +1,427 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Movie",
+    "contact": {
+      "email": "contact@pietrzakadrian.com"
+    }
+  },
+  "host": "movie.pietrzakadrian.com",
+  "schemes": ["https", "http"],
+  "tags": [
+    {
+      "name": "Movies",
+      "description": "Movies data"
+    },
+    {
+      "name": "Comments",
+      "description": "Comments data"
+    }
+  ],
+  "paths": {
+    "/movies": {
+      "get": {
+        "tags": ["Movies"],
+        "summary": "returns movies's data",
+        "description": "",
+        "operationId": "getMovies",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "required": false,
+            "type": "number",
+            "default": "12"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "offset",
+            "required": false,
+            "type": "number",
+            "default": "0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/getMovies"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Movies"],
+        "summary": "sets movie data",
+        "description": "",
+        "operationId": "setMovies",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/setMovies"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/responseMovies"
+            }
+          }
+        }
+      }
+    },
+    "/comments": {
+      "get": {
+        "tags": ["Comments"],
+        "summary": "returns comment's data",
+        "description": "",
+        "operationId": "getComments",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "required": false,
+            "type": "number",
+            "default": "12"
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "offset",
+            "required": false,
+            "type": "number",
+            "default": "0"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/getComments"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Comments"],
+        "summary": "sets comment data",
+        "description": "",
+        "operationId": "setComments",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/setComments"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/responseComments"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "getMovies": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "movie_id": {
+                "type": "integer"
+              },
+              "movie_title": {
+                "type": "string"
+              },
+              "movie_year": {
+                "type": "string"
+              },
+              "movie_rated": {
+                "type": "string"
+              },
+              "movie_released": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "movie_runtime": {
+                "type": "string"
+              },
+              "movie_genre": {
+                "type": "string"
+              },
+              "movie_director": {
+                "type": "string"
+              },
+              "movie_writer": {
+                "type": "string"
+              },
+              "movie_actors": {
+                "type": "string"
+              },
+              "movie_plot": {
+                "type": "string"
+              },
+              "movie_language": {
+                "type": "string"
+              },
+              "movie_country": {
+                "type": "string"
+              },
+              "movie_awards": {
+                "type": "string"
+              },
+              "movie_poster": {
+                "type": "string"
+              },
+              "movie_ratings": {
+                "type": "array",
+                "items": {
+                  "properties": {
+                    "Value": {
+                      "type": "string"
+                    },
+                    "Source": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "movie_metascore": {
+                "type": "integer"
+              },
+              "movie_imdbRating": {
+                "type": "number"
+              },
+              "movie_imdbVotes": {
+                "type": "string"
+              },
+              "movie_imdbID": {
+                "type": "string"
+              },
+              "movie_type": {
+                "type": "string"
+              },
+              "movie_dvd": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "movie_boxOffice": {
+                "type": "string"
+              },
+              "movie_production": {
+                "type": "string"
+              },
+              "movie_website": {
+                "type": "string"
+              },
+              "movie_response": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "setMovies": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "responseMovies": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "year": {
+                "type": "string"
+              },
+              "rated": {
+                "type": "string"
+              },
+              "released": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "runtime": {
+                "type": "string"
+              },
+              "genre": {
+                "type": "string"
+              },
+              "director": {
+                "type": "string"
+              },
+              "writer": {
+                "type": "string"
+              },
+              "actors": {
+                "type": "string"
+              },
+              "plot": {
+                "type": "string"
+              },
+              "language": {
+                "type": "string"
+              },
+              "country": {
+                "type": "string"
+              },
+              "awards": {
+                "type": "string"
+              },
+              "poster": {
+                "type": "string"
+              },
+              "ratings": {
+                "type": "array",
+                "items": {
+                  "properties": {
+                    "Value": {
+                      "type": "string"
+                    },
+                    "Source": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "metascore": {
+                "type": "integer"
+              },
+              "imdbRating": {
+                "type": "number"
+              },
+              "imdbVotes": {
+                "type": "string"
+              },
+              "imdbID": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "dvd": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "boxOffice": {
+                "type": "string"
+              },
+              "production": {
+                "type": "string"
+              },
+              "website": {
+                "type": "string"
+              },
+              "response": {
+                "type": "boolean"
+              }
+            }
+          }
+        }
+      }
+    },
+    "getComments": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "comment_id": {
+                "type": "integer"
+              },
+              "comment_content": {
+                "type": "string"
+              },
+              "comment_movieId": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "responseComments": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "boolean"
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "movie": {
+                "type": "integer"
+              },
+              "content": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "setComments": {
+      "type": "object",
+      "properties": {
+        "movieId": {
+          "type": "integer"
+        },
+        "content": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "GitHub repository",
+    "url": "https://github.com/pietrzakadrian/movie"
+  }
+}
